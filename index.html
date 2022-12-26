@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation of GPA</title>
+    <script>
+        sum_of_hours=0;
+        sum_of_pro=0;
+        check = 1;
+
+        function GPA(){
+        
+            course = document.getElementById('Course').value;
+            degree = document.getElementById('Degree').value;
+            hours = document.getElementById('Hours').value;
+            counter = 0;
+
+            if (degree >= 90 && degree <= 100) {
+                point = 4;
+            }else if (degree >= 85 && degree < 90) {
+                point = 3.7;
+            }else if (degree >= 80 && degree < 85) {
+                point = 3.3;
+            }else if (degree >= 75 && degree < 80) {
+                point = 3;
+            }else if (degree >= 70 && degree < 75) {
+                point = 2.7;
+            }else if (degree >= 65 && degree < 70) {
+                point = 2.4;
+            }else if (degree >= 60 && degree < 65) {
+                point = 2.2;
+            }else if (degree >= 50 && degree < 60) {
+                point = 2;
+            }else if (degree >= 0 && degree < 50) {
+                point = 0;
+            }else{
+                point = 'Error';
+                check = 0;
+            }
+
+            pro=hours*point;
+            sum_of_hours+=Number(hours);
+            sum_of_pro+=Number(pro);
+
+            document.getElementById('T2').innerHTML+='<tr><td>'+course+'</td><td>'+degree+'</td><td>'+hours+'</td><td>'+point+'</td></tr>';
+            if (check) {
+            document.getElementById('foot').innerHTML='<center><div class="GPA" id="GPA">'+"The GPA is "+sum_of_pro/sum_of_hours+'</div></center>';
+            }else{
+            document.getElementById('foot').innerHTML='<center><div class="GPA" id="GPA">'+"Erorr"+'</div></center>';
+            }
+        }
+    </script>
+</head>
+<style>
+    body{
+    background-image: url('https://images5.alphacoders.com/112/1123013.jpg');
+    background-size: 100%;
+}
+header{
+    text-align: center;
+    font-size: 6em;
+    margin-top: 60px;
+    text-shadow: 10px 15px 20px black;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.T1{
+    text-align: center;
+    width: 100%;
+}
+.TD1{
+    text-align: center;
+    font-size: 150%;
+    width: 90%;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    border: solid black 7px;
+}
+.button{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: solid black 5px;
+    margin-top:50px;
+    width: 350px;
+    height: 70px;
+    border-radius: 20px;
+    background-color: white;
+}
+.button:hover{
+    background-color: rgba(128, 0, 128, 0.654);
+}
+.T2{
+    text-align: center;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: solid black 5px;
+    border-collapse: collapse;
+    background-color: white; 
+}
+.TD2{
+    text-align: center;
+    font-size: 30px;
+    width: 400px;
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* border: solid black 2px; */
+    border-collapse: collapse;
+    background-color: silver;
+}
+.GPA{
+    font-size: 150%;
+    width: 350px;
+    height: 70px;
+    padding-top: 30px;
+    /* padding-bottom: 30px; */
+    margin-top: 30px;
+    border: solid black 5px;
+    background-color: gray;
+}
+</style>
+<header>Calculation of GPA</header>
+<body id="body">
+    <div>
+    <table class="T1" id="T1" align="center">
+        <tr>
+            <td><input class="TD1" id="Course" type="text" placeholder="Course Name"></td>
+            <td><input class="TD1" id="Degree" type="text" placeholder="The Degree in this Course"></td>
+            <td><input class="TD1" id="Hours"  type="text" placeholder="Hours of this Course"></td>
+        </tr>
+    </table>
+    <center><div><input class="button" type="button" value="Add Course" onclick="GPA()"></div></center>
+    <center><table class="T2" id="T2" border="1">
+        <tr>
+            <td class="TD2" id="TD2">Course Name</td>
+            <td class="TD2" id="TD2">Degree</td>
+            <td class="TD2" id="TD2">Hours</td>
+            <td class="TD2" id="TD2">Point</td>
+        </tr>
+    </table></center>
+    <div id="foot"></div>
+    <!-- <center><div class="GPA" id="GPA">GPA Will Be Here</div></center> -->
+    </div>
+</body>
+</html>
